@@ -2,60 +2,60 @@
 <items version="2" >
 
     <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_a75825036ef210d56e6cf27fc2113ea431e1d78e/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="98759eb35b9318bfcf5f765b9a0e9ccc98ea4e0f">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_90f6b1a56e0cd2cef6dd1f12de504b171d8f30e3/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_c0227b1067f637eebad342eb24ad618573737a7a/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="355a69e008cf818b13f29a7a763074a2cdf31c80">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_a43acd9d357ba2697a9bf554bd559254d521fb2c/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.3.0_d82233bb80622498aa83e79437679974e0da0d6b/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_f794eeba71bbdbdfd0d59476ad7cd32cec225d65/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_7c02f52840126c4730bd09572eb90ab7b304c2b1/classes.dex" />
-    </item>
-    <item
-        jar="/Users/jderrico/Documents/Soundify/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="/Users/jderrico/Documents/Soundify/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_634913abe76a54e577b5f19916c6de322f783602/classes.dex" />
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_3718a09d8586f7aeb03721c6d96092787bfcc29a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_0678f30277c22d38a2b2194529003e0770f7a2aa\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4019d014978b6f018e93c0ef2bd5e31e07e41670">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_48b79662322c727bcc7c0da05ce3e50b9c60a128\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_b326ba682da50ab25f1f22860b25f8e5bb1f1a72\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_952686a2de95fb8ce457f84420a996da9b18eec0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_9078cf728605f3a8a1858183ef273e8c23c5922b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_080473c5affb2019b9a430d609f38fceea1e884b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9c0e286e4a5e7ceafc3578b37e1d6e7a469bd7c6">
+        <dex dex="C:\Users\josep\Desktop\GTI785\Laboratoire\Soundify-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b7aa0d1d5236e48c7147e41aebadc0aeff403694\classes.dex" />
     </item>
 
 </items>
