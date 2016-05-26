@@ -1,6 +1,6 @@
-# Soundify | Client
+# Soundify | Server
 
-A remote-like client side system that makes you able to interact with an external music playlist.
+The back-end side of the Soundify Client application, the core for the music manipulations.
 ## Installation
 
 ### Installing and running the application
@@ -13,7 +13,7 @@ A remote-like client side system that makes you able to interact with an externa
 ## Contributing
 
 1. Fork it :fork_and_knife:
-2. Clone it  :two_men_holding_hands: `git clone https://github.com/devname/soundify-client.git`
+2. Clone it  :two_men_holding_hands: `git clone https://github.com/devname/soundify-server.git`
 3. Create your feature branch: `git checkout -b my-new-feature`
 4. Commit your changes: `git commit -am 'Add some feature'`
 5. Push to the branch: `git push origin my-new-feature`
