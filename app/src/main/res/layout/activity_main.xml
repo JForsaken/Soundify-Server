@@ -7,39 +7,4 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Previous"
-            android:id="@+id/bntPrevious"
-            android:layout_above="@+id/btnPause"
-            android:layout_toEndOf="@+id/btnPause"
-            android:onClick="previous" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pause"
-            android:id="@+id/btnPause"
-            android:layout_below="@+id/btnNext"
-            android:layout_alignStart="@+id/btnPlay"
-            android:onClick="pause" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Play"
-            android:id="@+id/btnPlay"
-            android:layout_alignTop="@+id/bntPrevious"
-            android:layout_alignParentStart="true"
-            android:onClick="play" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            android:id="@+id/btnNext"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/btnPause"
-            android:onClick="next" />
 </LinearLayout>
