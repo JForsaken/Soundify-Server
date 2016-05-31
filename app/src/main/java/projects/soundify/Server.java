@@ -6,6 +6,9 @@ package projects.soundify;
 
 import android.content.res.Resources;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,22 +79,23 @@ public class Server extends NanoHTTPD {
         final String baseUri = session.getUri().substring(1).split("/")[0].toLowerCase();
         String response = "This was a no effect GET";
 
+        Song song = null;
         switch(baseUri) {
             case "play":
-                _musicController.play();
-                response = "Has played a song";
+                song = _musicController.play();
+                response = serializer(song);
                 break;
             case "pause":
                 _musicController.pause();
                 response = "Has paused a song";
                 break;
             case "next":
-                _musicController.next();
-                response = "Next song is the current song";
+                song = _musicController.next();
+                response = serializer(song);
                 break;
             case "previous":
-                _musicController.previous();
-                response = "Previous song is the current song";
+                song = _musicController.previous();
+                response = serializer(song);
                 break;
             case "shuffle":
                 _musicController.shuffle();
@@ -112,7 +116,15 @@ public class Server extends NanoHTTPD {
         return "WAS A POST";
     }
 
+    private String serializer(Song song) {
+        Gson gson = new GsonBuilder().create();
+        String json = gson.toJson(song);//Java­>JSON
+
+        return json;
+    }
+
 
     private class NotFoundException extends RuntimeException {
     }
+
 }

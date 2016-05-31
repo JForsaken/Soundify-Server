@@ -4,33 +4,33 @@ package projects.soundify;
  * Created by jderrico on 16-05-17.
  */
 public class Song {
-    private int _id;
-    private String _path;
+    private int id;
+    private String path;
 
-    private String _title;
-    private String _artist;
-    private String _composer;
-    private String _genre;
-    private String _album;
+    private String title;
+    private String artist;
+    private String composer;
+    private String genre;
+    private String album;
 
 
     public Song(int songID, String songPath, String songTitle, String songArtist, String songComposer, String songGenre, String songAlbum) {
-        _id = songID;
-        _path = songPath;
+        id = songID;
+        path = songPath;
 
-        _title = songTitle;
-        _artist = songArtist;
-        _composer = songComposer;
-        _genre = songGenre;
-        _album = songAlbum;
+        title = songTitle;
+        artist = songArtist;
+        composer = songComposer;
+        genre = songGenre;
+        album = songAlbum;
     }
 
-    public int getID(){return _id;}
-    public String getPath(){return _path;}
+    public int getID(){return id;}
+    public String getPath(){return path;}
 
-    public String getTitle(){return _title;}
-    public String getArtist(){return _artist;}
-    public String getComposer(){return _composer;}
-    public String getGenre(){return _genre;}
-    public String getAlbum(){return _album;}
+    public String getTitle(){return title;}
+    public String getArtist(){return artist;}
+    public String getComposer(){return composer;}
+    public String getGenre(){return genre;}
+    public String getAlbum(){return album;}
 }

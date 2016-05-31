@@ -25,4 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile files('libs/jaudiotagger-2.2.3.jar')
     compile 'com.nanohttpd:nanohttpd:2.1.1'
+    compile 'com.google.code.gson:gson:2.2.+'
 }

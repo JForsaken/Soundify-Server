@@ -88,8 +88,9 @@ public class MusicController {
         prepareSong(_songList.get(0));
     }
 
-    public void play() {
+    public Song play() {
         _mediaPlayer.start();
+        return _songList.get(_songOrder.get(_currentIndex));
     }
 
     public void pause() {
@@ -104,15 +105,15 @@ public class MusicController {
         _isSongLooping = !_isSongLooping;
     }
 
-    public void next() {
-        changeSong(true, false);
+    public Song next() {
+        return changeSong(true, false);
     }
 
-    public void previous() {
-        changeSong(false, false);
+    public Song previous() {
+        return changeSong(false, false);
     }
 
-    private void changeSong(boolean isForward, boolean autoPlay) {
+    private Song changeSong(boolean isForward, boolean autoPlay) {
         final boolean isPlaying = _mediaPlayer.isPlaying();
 
         if (isForward) {
@@ -134,6 +135,8 @@ public class MusicController {
         _mediaPlayer.reset();
         prepareSong(_songList.get(_songOrder.get(_currentIndex)));
         if (isPlaying || autoPlay) { _mediaPlayer.start(); }
+
+        return _songList.get(_songOrder.get(_currentIndex));
     }
 
     private void prepareSong(Song song) {
