@@ -12,9 +12,10 @@ public class Song {
     private String composer;
     private String genre;
     private String album;
+    private int duration;
 
 
-    public Song(int songID, String songPath, String songTitle, String songArtist, String songComposer, String songGenre, String songAlbum) {
+    public Song(int songID, String songPath, String songTitle, String songArtist, String songComposer, String songGenre, String songAlbum, int songDuration) {
         id = songID;
         path = songPath;
 
@@ -23,6 +24,7 @@ public class Song {
         composer = songComposer;
         genre = songGenre;
         album = songAlbum;
+        duration = songDuration;
     }
 
     public int getID(){return id;}
@@ -33,4 +35,5 @@ public class Song {
     public String getComposer(){return composer;}
     public String getGenre(){return genre;}
     public String getAlbum(){return album;}
+    public int getDuration(){return duration;}
 }
