@@ -50,8 +50,9 @@ public class MusicController {
                     String composer = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_COMPOSER);
                     String genre = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE);
                     String album = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+                    String duration = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
 
-                    Song currentSong = new Song(i, listOfFiles[i].getPath(), title, artist, composer, genre, album);
+                    Song currentSong = new Song(i, listOfFiles[i].getPath(), title, artist, composer, genre, album, duration);
                     _songList.add(currentSong);
                     _songOrder.add(i);
                 }
@@ -72,32 +73,43 @@ public class MusicController {
         prepareSong(_songList.get(0));
     }
 
-    public Song play() {
-        _mediaPlayer.start();
+    public Song play(boolean isStreaming) {
+        if (!isStreaming) {
+            _mediaPlayer.start();
+        }
         return _songList.get(_songOrder.get(_currentIndex));
     }
 
-    public void pause() {
-        _mediaPlayer.pause();
+    public void pause(boolean isStreaming) {
+        if (!isStreaming) {
+            _mediaPlayer.pause();
+        }
+    }
+
+    public void stop(boolean isStreaming) {
+        if (!isStreaming) {
+            _mediaPlayer.stop();
+        }
     }
 
     public void shuffle() {
         randomizeOrder();
     }
 
-    public void repeat() {
-        _isSongLooping = !_isSongLooping;
+    public void loop() {
+        _isPlaylistLooping = !_isPlaylistLooping;
     }
 
-    public Song next() {
-        return changeSong(true, false);
+    public Song next(boolean isStreaming) {
+        return changeSong(true, false, isStreaming);
     }
 
-    public Song previous() {
-        return changeSong(false, false);
+    public Song previous(boolean isStreaming) {
+
+        return changeSong(false, false, isStreaming);
     }
 
-    private Song changeSong(boolean isForward, boolean autoPlay) {
+    private Song changeSong(boolean isForward, boolean autoPlay, boolean isStreaming) {
         final boolean isPlaying = _mediaPlayer.isPlaying();
 
         if (isForward) {
@@ -115,11 +127,14 @@ public class MusicController {
             }
         }
 
-        _mediaPlayer.pause();
-        _mediaPlayer.reset();
-        prepareSong(_songList.get(_songOrder.get(_currentIndex)));
-        if (isPlaying || autoPlay) { _mediaPlayer.start(); }
-
+        if (!isStreaming) {
+            _mediaPlayer.pause();
+            _mediaPlayer.reset();
+            prepareSong(_songList.get(_songOrder.get(_currentIndex)));
+            if (isPlaying || autoPlay) {
+                _mediaPlayer.start();
+            }
+        }
         return _songList.get(_songOrder.get(_currentIndex));
     }
 
@@ -158,7 +173,7 @@ public class MusicController {
                 _mediaPlayer.reset();
                 _currentIndex = 0;
             }
-            else { changeSong(true, true); }
+            else { changeSong(true, true, true); }
         }
     }
 }

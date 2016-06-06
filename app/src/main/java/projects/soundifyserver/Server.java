@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fi.iki.elonen.NanoHTTPD;
+import projects.soundify.ActionName;
+import projects.soundify.ActionType;
 
 
 public class Server extends NanoHTTPD {
@@ -76,33 +78,44 @@ public class Server extends NanoHTTPD {
     }
 
     private String handleGet(IHTTPSession session, Map<String, String> parms) {
-        final String baseUri = session.getUri().substring(1).split("/")[0].toLowerCase();
+        final String uri = session.getUri().substring(1);
+        final String actionType = uri.split("/")[0].toLowerCase();
+        final String actionName = uri.split("/")[1].toLowerCase();
+
+
+        final boolean isStreaming = ActionType.valueOf(actionType) == ActionType.stream;
+
         String response = "This was a no effect GET";
 
         Song song = null;
-        switch(baseUri) {
-            case "play":
-                song = _musicController.play();
+
+        switch(ActionName.valueOf(actionName)) {
+            case play:
+                song = _musicController.play(isStreaming);
                 response = serializer(song);
                 break;
-            case "pause":
-                _musicController.pause();
+            case pause:
+                _musicController.pause(isStreaming);
                 response = "Has paused a song";
                 break;
-            case "next":
-                song = _musicController.next();
+            case stop:
+                _musicController.stop(isStreaming);
+                response = "Has stopped a song";
+                break;
+            case next:
+                song = _musicController.next(isStreaming);
                 response = serializer(song);
                 break;
-            case "previous":
-                song = _musicController.previous();
+            case previous:
+                song = _musicController.previous(isStreaming);
                 response = serializer(song);
                 break;
-            case "shuffle":
+            case shuffle:
                 _musicController.shuffle();
                 response = "Shuffling playlist";
                 break;
-            case "loop":
-                _musicController.repeat();
+            case loop:
+                _musicController.loop();
                 response = "looping playlist";
                 break;
         }
@@ -126,5 +139,4 @@ public class Server extends NanoHTTPD {
 
     private class NotFoundException extends RuntimeException {
     }
-
 }
