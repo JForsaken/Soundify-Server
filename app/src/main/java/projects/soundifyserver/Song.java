@@ -1,4 +1,4 @@
-package projects.soundify;
+package projects.soundifyserver;
 
 /**
  * Created by jderrico on 16-05-17.

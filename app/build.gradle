@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "projects.soundify"
+        applicationId "projects.soundifyserver"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
@@ -23,7 +23,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
-    compile files('libs/jaudiotagger-2.2.3.jar')
+    compile files('libs/jaudiotagger-2.0.4.jar')
     compile 'com.nanohttpd:nanohttpd:2.1.1'
     compile 'com.google.code.gson:gson:2.2.+'
 }

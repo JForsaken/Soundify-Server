@@ -1,4 +1,4 @@
-package projects.soundify;
+package projects.soundifyserver;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
