@@ -1,16 +1,7 @@
-package projects.soundify;
+package projects.soundifyserver;
 
+import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.AudioHeader;
-import org.jaudiotagger.audio.exceptions.CannotReadException;
-import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
-import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
-import org.jaudiotagger.tag.FieldKey;
-import org.jaudiotagger.tag.Tag;
-import org.jaudiotagger.tag.TagException;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,39 +35,30 @@ public class MusicController {
         _mediaPlayer.reset();
         _currentIndex = 0;
 
-        File folder = new File("/storage/sdcard/Download");
+        File folder = new File("/storage/emulated/0/Music/");
         File[] listOfFiles = folder.listFiles();
+        MediaMetadataRetriever metadataRetriever = new MediaMetadataRetriever();
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
-                AudioFile audioFile = null;
+
+                metadataRetriever.setDataSource(listOfFiles[i].getPath());
+
                 try {
-                    audioFile = AudioFileIO.read(listOfFiles[i]);
-                } catch (CannotReadException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (TagException e) {
-                    e.printStackTrace();
-                } catch (ReadOnlyFileException e) {
-                    e.printStackTrace();
-                } catch (InvalidAudioFrameException e) {
+                    String title = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                    String artist = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+                    String composer = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_COMPOSER);
+                    String genre = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_GENRE);
+                    String album = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+                    String duration = metadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+
+                    Song currentSong = new Song(i, listOfFiles[i].getPath(), title, artist, composer, genre, album, duration);
+                    _songList.add(currentSong);
+                    _songOrder.add(i);
+                }
+                catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                Tag tag = audioFile.getTag();
-                AudioHeader audioHeader = audioFile.getAudioHeader();
-
-                String title = tag.getFirst(FieldKey.TITLE);
-                String artist = tag.getFirst(FieldKey.ARTIST);
-                String composer = tag.getFirst(FieldKey.COMPOSER);
-                String genre = tag.getFirst(FieldKey.GENRE);
-                String album = tag.getFirst(FieldKey.ALBUM);
-                int duration = audioHeader.getTrackLength();
-
-                Song currentSong = new Song(i, listOfFiles[i].getPath(), title, artist, composer, genre, album, duration);
-                _songList.add(currentSong);
-                _songOrder.add(i);
             }
         }
 

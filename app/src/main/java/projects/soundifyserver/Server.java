@@ -1,4 +1,4 @@
-package projects.soundify;
+package projects.soundifyserver;
 
 /**
  * Created by jderrico on 16-05-29.
@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fi.iki.elonen.NanoHTTPD;
+import projects.soundify.ActionName;
+import projects.soundify.ActionType;
 
 
 public class Server extends NanoHTTPD {
@@ -86,6 +88,7 @@ public class Server extends NanoHTTPD {
         String response = "This was a no effect GET";
 
         Song song = null;
+
         switch(ActionName.valueOf(actionName)) {
             case play:
                 song = _musicController.play(isStreaming);

@@ -1,4 +1,4 @@
-package projects.soundify;
+package projects.soundifyserver;
 
 /**
  * Created by jderrico on 16-05-17.
@@ -12,10 +12,10 @@ public class Song {
     private String composer;
     private String genre;
     private String album;
-    private int duration;
+    private String duration;
 
 
-    public Song(int songID, String songPath, String songTitle, String songArtist, String songComposer, String songGenre, String songAlbum, int songDuration) {
+    public Song(int songID, String songPath, String songTitle, String songArtist, String songComposer, String songGenre, String songAlbum, String songDuration) {
         id = songID;
         path = songPath;
 
@@ -35,5 +35,5 @@ public class Song {
     public String getComposer(){return composer;}
     public String getGenre(){return genre;}
     public String getAlbum(){return album;}
-    public int getDuration(){return duration;}
+    public String getDuration(){return duration;}
 }
