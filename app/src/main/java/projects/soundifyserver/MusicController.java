@@ -17,10 +17,11 @@ public class MusicController {
     private ArrayList<Song> _songList = new ArrayList<Song>();
     private ArrayList<Integer> _songOrder  = new ArrayList<Integer>();
     private int _currentIndex = 0;
-
-    MediaPlayer _mediaPlayer = new MediaPlayer();
+    private MediaPlayer _mediaPlayer = new MediaPlayer();
     private boolean _isPlaylistLooping = false;
     private boolean _isSongLooping = false;
+    private boolean _isStopped = false;
+    private Song _currentSong = null;
 
     public static MusicController getInstance() {
         return _instance;
@@ -75,7 +76,12 @@ public class MusicController {
 
     public Song play(boolean isStreaming) {
         if (!isStreaming) {
+            if (_isStopped) {
+                prepareSong(_currentSong);
+            }
+
             _mediaPlayer.start();
+            _isStopped = false;
         }
         return _songList.get(_songOrder.get(_currentIndex));
     }
@@ -89,6 +95,7 @@ public class MusicController {
     public void stop(boolean isStreaming) {
         if (!isStreaming) {
             _mediaPlayer.stop();
+            _isStopped = true;
         }
     }
 
@@ -140,8 +147,10 @@ public class MusicController {
 
     private void prepareSong(Song song) {
         try {
+            _mediaPlayer.reset();
             _mediaPlayer.setDataSource(song.getPath());
             _mediaPlayer.prepare();
+            _currentSong = song;
         } catch (IOException e) {
             e.printStackTrace();
         }
