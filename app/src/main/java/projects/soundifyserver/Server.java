@@ -121,8 +121,8 @@ public class Server extends NanoHTTPD {
                 _musicController.shuffle();
                 response = "Shuffling playlist";
                 break;
-            case loop:
-                _musicController.loop();
+            case repeat:
+                _musicController.repeat();
                 response = "looping playlist";
                 break;
         }

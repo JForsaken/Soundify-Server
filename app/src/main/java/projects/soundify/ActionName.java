@@ -10,5 +10,5 @@ public enum ActionName {
     next,
     previous,
     shuffle,
-    loop
+    repeat
 }

@@ -19,8 +19,6 @@ public class MusicController {
     private ArrayList<Integer> _songOrder  = new ArrayList<Integer>();
     private int _currentIndex = 0;
     private MediaPlayer _mediaPlayer = new MediaPlayer();
-    private boolean _isPlaylistLooping = false;
-    private boolean _isSongLooping = false;
     private boolean _isStopped = false;
     private Song _currentSong = null;
 
@@ -70,7 +68,7 @@ public class MusicController {
         _mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                performOnSongEnd();
+
             }
         });
 
@@ -106,17 +104,17 @@ public class MusicController {
         randomizeOrder();
     }
 
-    public void loop() {
-        _isPlaylistLooping = !_isPlaylistLooping;
+    public void repeat() {
+        _mediaPlayer.setLooping(!_mediaPlayer.isLooping());
     }
 
     public Song next(boolean isStreaming) {
-        return changeSong(true, false, isStreaming);
+        return changeSong(true, isStreaming);
     }
 
     public Song previous(boolean isStreaming) {
 
-        return changeSong(false, false, isStreaming);
+        return changeSong(false, isStreaming);
     }
 
     public String[] getSongNameList() {
@@ -130,8 +128,7 @@ public class MusicController {
         return songNameList;
     }
 
-    private Song changeSong(boolean isForward, boolean autoPlay, boolean isStreaming) {
-        final boolean isPlaying = _mediaPlayer.isPlaying();
+    private Song changeSong(boolean isForward, boolean isStreaming) {
 
         if (isForward) {
             if (_currentIndex == _songList.size() - 1) {
@@ -149,13 +146,10 @@ public class MusicController {
         }
 
         if (!isStreaming) {
-            _mediaPlayer.pause();
-            _mediaPlayer.reset();
             prepareSong(_songList.get(_songOrder.get(_currentIndex)));
-            if (isPlaying || autoPlay) {
-                _mediaPlayer.start();
-            }
+            _mediaPlayer.start();
         }
+
         return _songList.get(_songOrder.get(_currentIndex));
     }
 
@@ -183,20 +177,4 @@ public class MusicController {
         _songOrder.add(0, currentSong);
     }
 
-    private void performOnSongEnd() {
-        if (_isSongLooping) {
-            _mediaPlayer.pause();
-            _mediaPlayer.reset();
-            prepareSong(_songList.get(_songOrder.get(_currentIndex)));
-        }
-        else {
-            // if the playlist ends
-            if (!_isPlaylistLooping && _currentIndex == _songList.size() - 1) {
-                _mediaPlayer.pause();
-                _mediaPlayer.reset();
-                _currentIndex = 0;
-            }
-            else { changeSong(true, true, true); }
-        }
-    }
 }
