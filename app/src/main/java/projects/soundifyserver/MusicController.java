@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -39,6 +40,8 @@ public class MusicController {
         File folder = new File("/storage/emulated/0/Music/");
         File[] listOfFiles = folder.listFiles();
         MediaMetadataRetriever metadataRetriever = new MediaMetadataRetriever();
+
+        Arrays.sort(listOfFiles);
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
@@ -114,6 +117,17 @@ public class MusicController {
     public Song previous(boolean isStreaming) {
 
         return changeSong(false, false, isStreaming);
+    }
+
+    public String[] getSongNameList() {
+
+        String[] songNameList = new String[_songList.size()];
+
+        for (int i = 0; i < _songList.size(); i++) {
+            songNameList[i] = _songList.get(i).getTitle();
+        }
+
+        return songNameList;
     }
 
     private Song changeSong(boolean isForward, boolean autoPlay, boolean isStreaming) {

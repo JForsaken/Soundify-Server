@@ -4,6 +4,8 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.Formatter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.math.BigInteger;
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
         catch (UnknownHostException e) {
             e.printStackTrace();
         }
+
+
+        ListView lstView = (ListView) findViewById(R.id.lstvSongsTitle);
+        String[] songs =  MusicController.getInstance().getSongNameList();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, songs);
+
+        lstView.setAdapter(adapter);
     }
 
     @Override
