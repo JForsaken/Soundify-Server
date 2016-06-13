@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class Server extends NanoHTTPD {
             Map<String, String> parms = session.getParms();
 
             if (uri.endsWith(".mp3")) {
-                return new NanoHTTPD.Response(Response.Status.OK, "audio/mp3", new FileInputStream(uri));
+                return new NanoHTTPD.Response(Response.Status.OK, "audio/mp3", new BufferedInputStream(new FileInputStream(uri)));
             }
 
             String responseString = serve(session, uri, method, parms);
