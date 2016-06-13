@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 /**
@@ -17,10 +18,9 @@ public class MusicController {
     private ArrayList<Song> _songList = new ArrayList<Song>();
     private ArrayList<Integer> _songOrder  = new ArrayList<Integer>();
     private int _currentIndex = 0;
-
-    MediaPlayer _mediaPlayer = new MediaPlayer();
-    private boolean _isPlaylistLooping = false;
-    private boolean _isSongLooping = false;
+    private MediaPlayer _mediaPlayer = new MediaPlayer();
+    private boolean _isStopped = false;
+    private Song _currentSong = null;
 
     public static MusicController getInstance() {
         return _instance;
@@ -38,6 +38,8 @@ public class MusicController {
         File folder = new File("/storage/emulated/0/Music/");
         File[] listOfFiles = folder.listFiles();
         MediaMetadataRetriever metadataRetriever = new MediaMetadataRetriever();
+
+        Arrays.sort(listOfFiles);
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
@@ -66,7 +68,7 @@ public class MusicController {
         _mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                performOnSongEnd();
+
             }
         });
 
@@ -75,7 +77,12 @@ public class MusicController {
 
     public Song play(boolean isStreaming) {
         if (!isStreaming) {
+            if (_isStopped) {
+                prepareSong(_currentSong);
+            }
+
             _mediaPlayer.start();
+            _isStopped = false;
         }
         return _songList.get(_songOrder.get(_currentIndex));
     }
@@ -89,6 +96,7 @@ public class MusicController {
     public void stop(boolean isStreaming) {
         if (!isStreaming) {
             _mediaPlayer.stop();
+            _isStopped = true;
         }
     }
 
@@ -96,21 +104,31 @@ public class MusicController {
         randomizeOrder();
     }
 
-    public void loop() {
-        _isPlaylistLooping = !_isPlaylistLooping;
+    public void repeat() {
+        _mediaPlayer.setLooping(!_mediaPlayer.isLooping());
     }
 
     public Song next(boolean isStreaming) {
-        return changeSong(true, false, isStreaming);
+        return changeSong(true, isStreaming);
     }
 
     public Song previous(boolean isStreaming) {
 
-        return changeSong(false, false, isStreaming);
+        return changeSong(false, isStreaming);
     }
 
-    private Song changeSong(boolean isForward, boolean autoPlay, boolean isStreaming) {
-        final boolean isPlaying = _mediaPlayer.isPlaying();
+    public String[] getSongNameList() {
+
+        String[] songNameList = new String[_songList.size()];
+
+        for (int i = 0; i < _songList.size(); i++) {
+            songNameList[i] = _songList.get(i).getTitle();
+        }
+
+        return songNameList;
+    }
+
+    private Song changeSong(boolean isForward, boolean isStreaming) {
 
         if (isForward) {
             if (_currentIndex == _songList.size() - 1) {
@@ -128,20 +146,19 @@ public class MusicController {
         }
 
         if (!isStreaming) {
-            _mediaPlayer.pause();
-            _mediaPlayer.reset();
             prepareSong(_songList.get(_songOrder.get(_currentIndex)));
-            if (isPlaying || autoPlay) {
-                _mediaPlayer.start();
-            }
+            _mediaPlayer.start();
         }
+
         return _songList.get(_songOrder.get(_currentIndex));
     }
 
     private void prepareSong(Song song) {
         try {
+            _mediaPlayer.reset();
             _mediaPlayer.setDataSource(song.getPath());
             _mediaPlayer.prepare();
+            _currentSong = song;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,20 +177,4 @@ public class MusicController {
         _songOrder.add(0, currentSong);
     }
 
-    private void performOnSongEnd() {
-        if (_isSongLooping) {
-            _mediaPlayer.pause();
-            _mediaPlayer.reset();
-            prepareSong(_songList.get(_songOrder.get(_currentIndex)));
-        }
-        else {
-            // if the playlist ends
-            if (!_isPlaylistLooping && _currentIndex == _songList.size() - 1) {
-                _mediaPlayer.pause();
-                _mediaPlayer.reset();
-                _currentIndex = 0;
-            }
-            else { changeSong(true, true, true); }
-        }
-    }
 }

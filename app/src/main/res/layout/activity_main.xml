@@ -7,4 +7,45 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"></TableRow>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0.0.0.0"
+            android:id="@+id/txtIP"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="IP : "
+            android:id="@+id/textView"
+            android:layout_alignBaseline="@+id/txtIP"
+            android:layout_alignBottom="@+id/txtIP"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lstvSongsTitle"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/txtIP"
+            android:layout_centerHorizontal="true"
+            android:choiceMode="none" />
+    </RelativeLayout>
+
+
 </LinearLayout>
